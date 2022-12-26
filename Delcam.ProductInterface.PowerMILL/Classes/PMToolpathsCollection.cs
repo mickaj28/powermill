@@ -87,7 +87,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <summary>
         /// Gets a dictionary of explorer paths indexed by the associated PMToolpath
         /// </summary>
-        public Dictionary<PMToolpath, string> ExplorerPaths()
+        public Dictionary<PMToolpath, string> GetExplorerPaths()
         {
             Dictionary<PMToolpath, string> result = new Dictionary<PMToolpath, string>();
             foreach (var keyedExplorerPath in ReadExplorerPaths())

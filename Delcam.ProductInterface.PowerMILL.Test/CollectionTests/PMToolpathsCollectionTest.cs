@@ -577,7 +577,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
             _powerMILL.LoadProject(TestFiles.ToolpathHierarchyProject);
             
             var toolpath = _powerMILL.ActiveProject.Toolpaths[0];
-            var toolpathExplorerPath = _powerMILL.ActiveProject.Toolpaths.ExplorerPaths()[toolpath];
+            var toolpathExplorerPath = _powerMILL.ActiveProject.Toolpaths.GetExplorerPaths()[toolpath];
 
             Assert.That(toolpathExplorerPath, Is.EquivalentTo("Toolpath\\Folder1\\Folder1"));
 
