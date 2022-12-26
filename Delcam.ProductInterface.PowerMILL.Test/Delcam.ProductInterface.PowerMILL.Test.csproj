@@ -431,6 +431,19 @@
     <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0efffa7052f23a8400001eaf00000000.pmlent" />
     <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f00035052f23a8d000021f900000000.pmlent" />
     <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f0f51c053732969000010e100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\desktop.ini" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\lockfile" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\ToolpathHierarchy.pmlprj" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\x23f5100063a994c90000343900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\x2402018063a9946f00001bd800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\x277dac9063a994d00000437300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\x27a1fec063a994d90000528900000000.pmlent" />
     <None Include="Files\PMfiles\PTFFiles\ImportPTFTest.ptf" />
     <None Include="Files\PMfiles\SetupsProject\active_entity.pmldat" />
     <None Include="Files\PMfiles\SetupsProject\Default_Thickness.pmldat" />
@@ -460,6 +473,7 @@
     <Content Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\pmill.ico" />
     <Content Include="Files\PMfiles\SetupsProject\pmill.ico" />
     <Content Include="PMEntityTests\PMToolPathTestGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
