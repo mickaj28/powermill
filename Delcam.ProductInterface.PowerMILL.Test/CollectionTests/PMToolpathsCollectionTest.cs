@@ -559,7 +559,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         }
 
         [Test]
-        public void OrderToolpathsByHierarchy()
+        public void OrderToolpathsByExplorer()
         {
             _powerMILL.LoadProject(TestFiles.ToolpathHierarchyProject);
             var toolpaths = _powerMILL.ActiveProject.Toolpaths;
@@ -568,6 +568,18 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
             var expectedOrder = new string[] { "3", "4", "6", "2", "1", "5" };
 
             Assert.That(toolpathNames, Is.EquivalentTo(expectedOrder));
+
+        }
+
+        [Test]
+        public void ReadToolpathExplorerPath()
+        {
+            _powerMILL.LoadProject(TestFiles.ToolpathHierarchyProject);
+            
+            var toolpath = _powerMILL.ActiveProject.Toolpaths[0];
+            var toolpathExplorerPath = _powerMILL.ActiveProject.Toolpaths.ExplorerPaths()[toolpath];
+
+            Assert.That(toolpathExplorerPath, Is.EquivalentTo("Toolpath\\Folder1\\Folder1"));
 
         }
     }

@@ -55,15 +55,46 @@ namespace Autodesk.ProductInterface.PowerMILL
                 names.Add(toolpath.Name);
             }
 
-            var explorerPathsText = _powerMILL.DoCommandEx("print folder \"Toolpath\"").ToString().Trim();
-            var orderedToolpathNames = explorerPathsText
-                .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(x => x.Split('\\').Last())
-                .ToList();
+            var orderedToolpathNames = ReadExplorerPaths().Keys.ToList();
 
             names = names.OrderBy(x => orderedToolpathNames.IndexOf(x)).ToList();
 
             return names;
+        }
+
+        /// <summary>
+        /// Gets a dictionary of explorer paths index by Toolpath name.
+        /// </summary>
+        private Dictionary<string, string> ReadExplorerPaths()
+        {
+            var explorerPathsText = _powerMILL.DoCommandEx("print folder \"Toolpath\"")
+                .ToString()
+                .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            var keyedExplorerPaths =
+                from fullPath in explorerPathsText
+                let pathComponents = fullPath.Split('\\')
+                let name = pathComponents.Last()
+                let path = string.Join("\\", pathComponents.Take(pathComponents.Length - 1))
+                where name != ""
+                select (name, path);
+
+            return keyedExplorerPaths.ToDictionary(
+                x => x.name,
+                x => x.path);
+        }
+
+        /// <summary>
+        /// Gets a dictionary of explorer paths indexed by the associated PMToolpath
+        /// </summary>
+        public Dictionary<PMToolpath, string> ExplorerPaths()
+        {
+            Dictionary<PMToolpath, string> result = new Dictionary<PMToolpath, string>();
+            foreach (var keyedExplorerPath in ReadExplorerPaths())
+            {
+                result.Add(this[keyedExplorerPath.Key], keyedExplorerPath.Value);
+            }
+            return result;
         }
 
         /// <summary>
