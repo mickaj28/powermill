@@ -45,7 +45,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
-        /// Gets a list of names of all Toolpaths in PowerMILL.
+        /// Gets a list of names of all Toolpaths in PowerMILL ordered as they appear in the explorer.
         /// </summary>
         internal List<string> ReadToolpaths()
         {
@@ -54,6 +54,15 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 names.Add(toolpath.Name);
             }
+
+            var explorerPathsText = _powerMILL.DoCommandEx("print folder \"Toolpath\"").ToString().Trim();
+            var orderedToolpathNames = explorerPathsText
+                .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Split('\\').Last())
+                .ToList();
+
+            names = names.OrderBy(x => orderedToolpathNames.IndexOf(x)).ToList();
+
             return names;
         }
 

@@ -8,6 +8,7 @@
 // **********************************************************************
 
 using System;
+using System.Linq;
 using Autodesk.ProductInterface.PowerMILL;
 using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
@@ -555,6 +556,19 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
 
             //Delete the entity
             _powerMILL.ActiveProject.Toolpaths.Remove(toolpath);
+        }
+
+        [Test]
+        public void OrderToolpathsByHierarchy()
+        {
+            _powerMILL.LoadProject(TestFiles.ToolpathHierarchyProject);
+            var toolpaths = _powerMILL.ActiveProject.Toolpaths;
+
+            var toolpathNames = toolpaths.Select(x => x.Name);
+            var expectedOrder = new string[] { "3", "4", "6", "2", "1", "5" };
+
+            Assert.That(toolpathNames, Is.EquivalentTo(expectedOrder));
+
         }
     }
 }
